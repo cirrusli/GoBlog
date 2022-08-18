@@ -10,7 +10,6 @@ func GetAllSummaries() (ArticleRes []*model.ArticleRes, err error) {
 	//在article表中查询选定字段
 	err = utils.MDB.Table("articles").
 		Select("aid,author,title,cover,summary").Scan(&ArticleRes).Error
-	//todo 这里如果传int类型的ID字段为什么传进JSON就是0了。。
 	if err != nil {
 		return nil, err
 	}

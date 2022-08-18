@@ -42,7 +42,7 @@ func Success(w http.ResponseWriter, data interface{}) {
 	resmsg.Code = "0001"
 	resmsg.Msg = "success"
 	resmsg.Data = data
-	resJson, _ := json.Marshal(resmsg)
+	resJson, _ := json.Marshal(resmsg) //没有tag的结构体字段无法传入Json
 	w.Header().Set("Content-Type", "application/json")
 	_, err := w.Write(resJson)
 	if err != nil {

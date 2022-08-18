@@ -4,6 +4,7 @@ import (
 	"SummerProject/dao"
 	"SummerProject/middleware"
 	"SummerProject/model"
+	"SummerProject/utils"
 	"errors"
 	"log"
 )
@@ -13,7 +14,7 @@ func Register(UserName string, Password string) (*model.LoginRes, error) {
 	//用户名查重
 	isDuplicate, _ := dao.GetUserByName(UserName)
 
-	log.Println("is duplicate", isDuplicate)
+	log.Println("is duplicate?", isDuplicate)
 
 	if isDuplicate != nil {
 		//数据库中已有该用户名
@@ -24,6 +25,7 @@ func Register(UserName string, Password string) (*model.LoginRes, error) {
 		user := model.MUser{
 			UserName: UserName,
 			Password: Password,
+			Uid:      utils.EncodeID(),
 		}
 		err := dao.CreateUser(&user)
 		if err != nil {
