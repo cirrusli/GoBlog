@@ -7,12 +7,14 @@ import (
 
 func main() {
 	//连接Redis
-	//dao.InitRedis()
+	//utils.InitRedis()
 
 	//连接MySQL
 	utils.InitMySQL()
 
+	//雪花算法
+	utils.InitSnow()
+
 	//注册路由
 	router.SetUpRouter()
-
 }
