@@ -3,7 +3,6 @@ package dao
 import (
 	"SummerProject/model"
 	"SummerProject/utils"
-	"log"
 )
 
 // CreateUser 创建用户信息
@@ -16,7 +15,6 @@ func CreateUser(user *model.MUser) (err error) {
 func GetUser(UserName string, Password string) *model.MUser {
 	user := new(model.MUser)
 	if err := utils.MDB.Where("user_name=? and password=?", UserName, Password).First(user).Error; err != nil {
-		log.Println(err.Error())
 		return nil
 	}
 	return user
@@ -28,9 +26,9 @@ func UpdateUser(user *model.MUser) (err error) {
 	return err
 }
 
-// DeleteUser 通过id删除用户信息
-func DeleteUser(id uint) (err error) {
-	err = utils.MDB.Where("id=?", id).Delete(&model.MUser{}).Error
+// DeleteUser 通过Uid删除用户信息
+func DeleteUser(uid int) (err error) {
+	err = utils.MDB.Where("id=?", uid).Delete(&model.MUser{}).Error
 	return err
 }
 

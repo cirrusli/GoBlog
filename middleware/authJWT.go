@@ -48,3 +48,10 @@ func ParseToken(tokenStr string) (*gojwt.Token, *Claims, error) {
 	}
 	return token, claims, err
 }
+
+//判断用户是否登录
+//token := r.Header.Get("Authorization")
+//_, claim, err := middleware.ParseToken(token)
+//if err != nil {
+//	utils.Error(w, errors.New("登录已过期，请重新登录！"))
+//}//todo 这部分使用中间件处理

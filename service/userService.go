@@ -29,15 +29,15 @@ func Register(UserName string, Password string) (*model.LoginRes, error) {
 		if err != nil {
 			return nil, errors.New("create user failed")
 		}
-		uid := int(user.ID)
-		token, err := middleware.Award(&uid)
+		token, err := middleware.Award(&user.Uid)
 		if err != nil {
 			return nil, errors.New("create token failed")
 		}
 
 		var registerRes = &model.LoginRes{
-			Token: token,
-			Uid:   uid, //todo 往前端传用户哪些信息
+			Token:     token,
+			UserName:  user.UserName,
+			AvatarUrl: user.AvatarUrl,
 		}
 		return registerRes, nil
 	}
@@ -50,15 +50,15 @@ func Login(UserName string, Password string) (*model.LoginRes, error) {
 	if user == nil {
 		return nil, errors.New("账号或密码错误！")
 	}
-	uid := int(user.ID)
-	token, err := middleware.Award(&uid)
+	token, err := middleware.Award(&user.Uid)
 	if err != nil {
 		return nil, errors.New("create token failed")
 	}
 
 	var loginRes = &model.LoginRes{
-		Token: token,
-		Uid:   uid,
+		Token:     token,
+		UserName:  user.UserName,
+		AvatarUrl: user.AvatarUrl,
 	}
 	return loginRes, nil
 }
