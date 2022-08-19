@@ -5,7 +5,7 @@ import "gorm.io/gorm"
 // MUser 用户信息
 type MUser struct {
 	gorm.Model
-	Uid       int    `json:"uid"` //EncodeID
+	Uid       int    `json:"uid" gorm:"primaryKey"` //EncodeID
 	UserName  string `json:"username"`
 	Password  string `json:"password"`
 	AvatarUrl string `json:"avatarUrl" gorm:"default:https://image-1302243118.cos.ap-beijing.myqcloud.com/public/img/BLUE_GLASSES_GOPHER-1616727843503.png"` //用户头像路径
