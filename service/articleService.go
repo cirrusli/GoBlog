@@ -11,7 +11,7 @@ import (
 func GetSummaryList() ([]*model.ArticleRes, error) {
 	summaries, err := dao.GetAllSummaries()
 	if err != nil {
-		return nil, errors.New("error getting summaries")
+		return nil, errors.New("获取文章摘要列表失败！")
 	}
 	return summaries, nil //返回摘要列表
 }
@@ -42,7 +42,7 @@ func GetArticle(aid int) (strData *model.StrData, err error) {
 	return strData, nil
 }
 
-// PostAndUpdateArticle 发布文章
+// PostAndUpdateArticle 发布或更新文章
 func PostAndUpdateArticle(article *model.Article) (err error) {
 	err = dao.PostAndUpdateArticle(article)
 	if err != nil {
@@ -51,10 +51,20 @@ func PostAndUpdateArticle(article *model.Article) (err error) {
 	return nil
 }
 
+// DeleteArticle 删除文章
 func DeleteArticle(aid int) (err error) {
 	err = dao.DeleteArticle(aid)
 	if err != nil {
 		return errors.New("文章删除失败！")
 	}
 	return nil
+}
+
+// GetUserArticle 通过uid获取用户的所有文章
+func GetUserArticle(uid int) (articleList []*model.Article, err error) {
+	articleList, err = dao.GetUserArticle(uid)
+	if err != nil {
+		return nil, errors.New("该作者的文章列表获取失败！")
+	}
+	return articleList, nil
 }

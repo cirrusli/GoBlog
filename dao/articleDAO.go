@@ -30,7 +30,7 @@ func PostAndUpdateArticle(article *model.Article) (err error) {
 	if err = utils.MDB.Table("articles").Where("aid=?", article.Aid).Updates(article).Error; err != nil {
 		return err
 	}
-	return
+	return err
 }
 
 // DeleteArticle 用户删除文章（软删除）
@@ -40,5 +40,11 @@ func DeleteArticle(aid int) (err error) {
 	if err = utils.MDB.Table("articles").Where("aid=?", aid).Delete(article).Error; err != nil {
 		return err
 	}
-	return
+	return err
+}
+func GetUserArticle(uid int) (articleList []*model.Article, err error) {
+	if err = utils.MDB.Table("articles").Where("uid=?", uid).Find(&articleList).Error; err != nil {
+		return nil, err
+	}
+	return articleList, nil
 }

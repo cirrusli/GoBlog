@@ -96,5 +96,12 @@ func DeleteArticle(w http.ResponseWriter, r *http.Request) {
 
 // GetUserArticle 由uid查看用户的所有文章
 func GetUserArticle(w http.ResponseWriter, r *http.Request) {
-
+	data := utils.GetRequestJsonParams(r)
+	uid, _ := strconv.Atoi(data["uid"].(string))
+	articleList, err := service.GetUserArticle(uid)
+	if err != nil {
+		utils.Error(w, err)
+		return
+	}
+	utils.Success(w, articleList)
 }

@@ -33,8 +33,8 @@ func SetUpRouter() {
 	//关注模块
 	http.HandleFunc("/follow", controller.FollowUser)
 	http.HandleFunc("/unfollow", controller.UnFollowUser)
-	http.HandleFunc("/getfollowers", controller.GetFollowingList) //我关注的
-	http.HandleFunc("/getfollowees", controller.GetFollowerList)  //关注我的
+	http.HandleFunc("/getfollowinglist", controller.GetFollowingList) //我关注的
+	http.HandleFunc("/getfollowerlist", controller.GetFollowerList)   //关注我的
 	//设置端口监听
 	server := http.Server{
 		Addr:    "127.0.0.1:6666",
