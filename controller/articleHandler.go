@@ -20,9 +20,8 @@ func GetArticleList(w http.ResponseWriter, r *http.Request) {
 
 // GetArticle 根据文章aid获取文章详细内容
 func GetArticle(w http.ResponseWriter, r *http.Request) {
-	articleData := utils.GetRequestJsonParams(r)
-	//前端传回的为字符串
-	aid, _ := strconv.Atoi(articleData["aid"].(string))
+	data := r.URL.Query().Get("aid")
+	aid, _ := strconv.Atoi(data)
 	articleRes, err := service.GetArticle(aid)
 	if err != nil {
 		utils.Error(w, err)
@@ -96,8 +95,8 @@ func DeleteArticle(w http.ResponseWriter, r *http.Request) {
 
 // GetUserArticle 由uid查看用户的所有文章
 func GetUserArticle(w http.ResponseWriter, r *http.Request) {
-	data := utils.GetRequestJsonParams(r)
-	uid, _ := strconv.Atoi(data["uid"].(string))
+	data := r.URL.Query().Get("uid")
+	uid, _ := strconv.Atoi(data)
 	articleList, err := service.GetUserArticle(uid)
 	if err != nil {
 		utils.Error(w, err)

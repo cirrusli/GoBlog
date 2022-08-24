@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-// GetRequestJsonParams 获取Json参数
+// GetRequestJsonParams 获取POST请求body中的JSON参数
 func GetRequestJsonParams(r *http.Request) map[string]interface{} {
 	var params map[string]interface{}
 	body, err := ioutil.ReadAll(r.Body)
