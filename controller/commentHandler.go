@@ -5,6 +5,7 @@ import "net/http"
 // GetComments 获取当前文章的所有评论
 func GetComments(w http.ResponseWriter, r *http.Request) {
 	//获取ArticleID
+	//todo
 }
 
 // PostComment 发布评论
