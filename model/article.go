@@ -29,8 +29,8 @@ type ArticleRes struct {
 	Summary string `json:"summary"`
 }
 
-// StrData 给前端传回全部是字符串
-type StrData struct {
+// ArticleStrData 给前端传回全部是字符串
+type ArticleStrData struct {
 	ID        string         `json:"id"`
 	CreatedAt time.Time      `json:"created_at"`
 	UpdatedAt time.Time      `json:"updated_at"`

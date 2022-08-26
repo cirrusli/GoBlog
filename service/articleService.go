@@ -17,10 +17,10 @@ func GetSummaryList() ([]*model.ArticleRes, error) {
 }
 
 // GetArticle 获取文章详情
-func GetArticle(aid int) (strData *model.StrData, err error) {
+func GetArticle(aid int) (strData *model.ArticleStrData, err error) {
 	article := new(model.Article)
 	article, err = dao.GetArticle(aid)
-	strData = &model.StrData{
+	strData = &model.ArticleStrData{
 		ID:        strconv.Itoa(int(article.ID)),
 		CreatedAt: article.CreatedAt,
 		UpdatedAt: article.UpdatedAt,

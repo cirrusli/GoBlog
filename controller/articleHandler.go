@@ -37,6 +37,7 @@ func PostArticle(w http.ResponseWriter, r *http.Request) {
 	//前端返回的文章数据如下：
 	//字符串类型需要转回int
 	uid, _ := strconv.Atoi(data["uid"].(string))
+	//刚发布的文章哪来下面这些
 	//hits, _ := strconv.Atoi(data["hits"].(string))
 	//comments, _ := strconv.Atoi(data["comments"].(string))
 	//likes, _ := strconv.Atoi(data["likes"].(string))
