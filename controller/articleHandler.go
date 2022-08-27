@@ -41,7 +41,6 @@ func PostArticle(w http.ResponseWriter, r *http.Request) {
 	//hits, _ := strconv.Atoi(data["hits"].(string))
 	//comments, _ := strconv.Atoi(data["comments"].(string))
 	//likes, _ := strconv.Atoi(data["likes"].(string))
-
 	article := &model.Article{
 		Aid:     utils.EncodeID(),
 		Uid:     uid,
@@ -51,12 +50,13 @@ func PostArticle(w http.ResponseWriter, r *http.Request) {
 		Summary: data["summary"].(string),
 		Content: data["content"].(string),
 	}
-	err := service.PostAndUpdateArticle(article)
+	aid := strconv.Itoa(article.Aid)
+	err := service.PostArticle(article)
 	if err != nil {
 		utils.Error(w, err)
 		return
 	}
-	utils.Success(w, nil) //发布成功
+	utils.Success(w, aid) //发布成功
 }
 
 // UpdateArticle 更新文章
@@ -74,7 +74,7 @@ func UpdateArticle(w http.ResponseWriter, r *http.Request) {
 		Summary: data["summary"].(string),
 		Content: data["content"].(string),
 	}
-	err := service.PostAndUpdateArticle(article)
+	err := service.UpdateArticle(article)
 	if err != nil {
 		utils.Error(w, err)
 		return

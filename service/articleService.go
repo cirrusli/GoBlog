@@ -42,11 +42,20 @@ func GetArticle(aid int) (strData *model.ArticleStrData, err error) {
 	return strData, nil
 }
 
-// PostAndUpdateArticle 发布或更新文章
-func PostAndUpdateArticle(article *model.Article) (err error) {
-	err = dao.PostAndUpdateArticle(article)
+// PostArticle 发布或更新文章
+func PostArticle(article *model.Article) (err error) {
+	err = dao.PostArticle(article)
 	if err != nil {
-		return errors.New("文章发布(更新)失败！")
+		return errors.New("文章发布失败！")
+	}
+	return nil
+}
+
+// UpdateArticle 发布或更新文章
+func UpdateArticle(article *model.Article) (err error) {
+	err = dao.UpdateArticle(article)
+	if err != nil {
+		return errors.New("文章更新失败！")
 	}
 	return nil
 }

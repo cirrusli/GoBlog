@@ -25,12 +25,20 @@ func GetArticle(aid int) (*model.Article, error) {
 	return article, nil
 }
 
-// PostAndUpdateArticle 用户发布/更新文章
-func PostAndUpdateArticle(article *model.Article) (err error) {
+// PostArticle 用户发布文章
+func PostArticle(article *model.Article) (err error) {
+	if err = utils.MDB.Table("articles").Create(article).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+// UpdateArticle 用户更新文章
+func UpdateArticle(article *model.Article) (err error) {
 	if err = utils.MDB.Table("articles").Where("aid=?", article.Aid).Updates(article).Error; err != nil {
 		return err
 	}
-	return err
+	return nil
 }
 
 // DeleteArticle 用户删除文章（软删除）
