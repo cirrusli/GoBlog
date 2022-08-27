@@ -32,11 +32,12 @@ func PostComment(w http.ResponseWriter, r *http.Request) {
 		Uid:     uid,
 		Aid:     aid,
 	}
+	cid := strconv.Itoa(comment.Cid)
 	err := service.PostComment(comment)
 	if err != nil {
 		utils.Error(w, err)
 	}
-	utils.Success(w, nil)
+	utils.Success(w, cid)
 }
 func DeleteComment(w http.ResponseWriter, r *http.Request) {
 	//获取ID(comment表中的ID)
