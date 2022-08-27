@@ -16,6 +16,7 @@ type MUser struct {
 // LoginRes 登录时携带token
 type LoginRes struct {
 	Token     string `json:"token"` //含有uid
+	Uid       string `json:"uid"`
 	UserName  string `json:"username"`
 	AvatarUrl string `json:"avatar_url"`
 }

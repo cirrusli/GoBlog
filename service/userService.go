@@ -7,6 +7,7 @@ import (
 	"SummerProject/utils"
 	"errors"
 	"log"
+	"strconv"
 )
 
 // Register 用户注册后直接登录
@@ -38,6 +39,7 @@ func Register(UserName string, Password string) (*model.LoginRes, error) {
 
 		var registerRes = &model.LoginRes{
 			Token:     token,
+			Uid:       strconv.Itoa(user.Uid),
 			UserName:  user.UserName,
 			AvatarUrl: user.AvatarUrl,
 		}
@@ -59,6 +61,7 @@ func Login(UserName string, Password string) (*model.LoginRes, error) {
 
 	var loginRes = &model.LoginRes{
 		Token:     token,
+		Uid:       strconv.Itoa(user.Uid),
 		UserName:  user.UserName,
 		AvatarUrl: user.AvatarUrl,
 	}
