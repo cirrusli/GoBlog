@@ -1,9 +1,9 @@
 package service
 
 import (
-	"SummerProject/dao"
-	"SummerProject/middleware"
-	"SummerProject/model"
+	"SummerProject/internal/dao"
+	"SummerProject/internal/middleware"
+	"SummerProject/internal/model"
 	"SummerProject/utils"
 	"errors"
 	"log"

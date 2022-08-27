@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"SummerProject/model"
+	"SummerProject/internal/model"
 	"SummerProject/utils"
 )
 

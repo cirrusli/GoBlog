@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"SummerProject/model"
+	"SummerProject/internal/model"
 	"encoding/json"
 	"io/ioutil"
 	"log"

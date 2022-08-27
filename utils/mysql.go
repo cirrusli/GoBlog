@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"SummerProject/model"
+	model2 "SummerProject/internal/model"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -37,7 +37,7 @@ func InitMySQL() {
 	//}
 
 	//绑定模型,自动创建对应的表
-	err = MDB.AutoMigrate(&model.MUser{}, &model.Article{}, &model.Comment{})
+	err = MDB.AutoMigrate(&model2.MUser{}, &model2.Article{}, &model2.Comment{}, &model2.Reply{}, &model2.Like{})
 	if err != nil {
 		log.Panicln("migrate model MUser failed:", err.Error())
 	}

@@ -1,8 +1,8 @@
 package service
 
 import (
-	"SummerProject/dao"
-	"SummerProject/model"
+	"SummerProject/internal/dao"
+	"SummerProject/internal/model"
 	"errors"
 )
 

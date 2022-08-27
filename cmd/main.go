@@ -1,7 +1,7 @@
 package main
 
 import (
-	"SummerProject/router"
+	"SummerProject/routers"
 	"SummerProject/utils"
 )
 
@@ -16,5 +16,5 @@ func main() {
 	utils.InitSnow()
 
 	//注册路由
-	router.SetUpRouter()
+	routers.SetUpRouter()
 }

@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"SummerProject/model"
-	"SummerProject/service"
+	"SummerProject/internal/model"
+	"SummerProject/internal/service"
 	"SummerProject/utils"
 	"net/http"
 	"strconv"

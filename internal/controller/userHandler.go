@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"SummerProject/service"
+	"SummerProject/internal/service"
 	"SummerProject/utils"
 	"net/http"
 )
