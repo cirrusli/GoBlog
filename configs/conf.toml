@@ -1,0 +1,9 @@
+[MySQL]
+UserName     = "root"
+Password     = "lzq"
+URL          = "127.0.0.1:3306"
+DatabaseName = "summer_project"
+[Redis]
+Addr         = "localhost:6379"
+Password     = ""
+DB           = 0
