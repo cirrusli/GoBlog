@@ -50,10 +50,12 @@ func LogOut(w http.ResponseWriter, r *http.Request) {
 
 // GetUserInfo 获取用户详细信息
 func GetUserInfo(w http.ResponseWriter, r *http.Request) {
+	//data := utils.GetRequestJsonParams(r)
+	//uid, _ := strconv.Atoi(data["uid"].(string))
 
 }
 
 // UpdateUserInfo 用户信息修改
 func UpdateUserInfo(w http.ResponseWriter, r *http.Request) {
-
+	//todo 修改用户名，密码，头像
 }
