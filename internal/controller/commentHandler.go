@@ -20,7 +20,7 @@ func GetComments(w http.ResponseWriter, r *http.Request) {
 	utils.Success(w, commentList)
 }
 
-// PostComment 发布评论
+// PostComment 发布评论，返回生成的评论的cid
 func PostComment(w http.ResponseWriter, r *http.Request) {
 	data := utils.GetRequestJsonParams(r)
 	uid, _ := strconv.Atoi(data["uid"].(string))
@@ -39,6 +39,20 @@ func PostComment(w http.ResponseWriter, r *http.Request) {
 	}
 	utils.Success(w, cid)
 }
+
+// DeleteComment 根据评论的cid删除
 func DeleteComment(w http.ResponseWriter, r *http.Request) {
-	//获取ID(comment表中的ID)
+	data := utils.GetRequestJsonParams(r)
+	cid, _ := strconv.Atoi(data["cid"].(string))
+	err := service.DeleteComment(cid)
+	if err != nil {
+		utils.Error(w, err)
+	}
+	utils.Success(w, nil)
+}
+
+// Reply2Comment 回复评论ReplyType字段为0，回复的是回复则为1
+func Reply2Comment(w http.ResponseWriter, r *http.Request) {
+	//data := utils.GetRequestJsonParams(r)
+
 }

@@ -21,3 +21,10 @@ func PostComment(comment *model.Comment) (err error) {
 	}
 	return nil
 }
+func DeleteComment(cid int) (err error) {
+	err = dao.DeleteComment(cid)
+	if err != nil {
+		return errors.New("删除评论失败")
+	}
+	return nil
+}
