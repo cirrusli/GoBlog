@@ -7,3 +7,5 @@ DatabaseName = "summer_project"
 Addr         = "localhost:6379"
 Password     = ""
 DB           = 0
+[Web]
+Port         = "6666"
