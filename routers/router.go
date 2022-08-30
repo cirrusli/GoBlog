@@ -7,7 +7,7 @@ import (
 )
 
 //goland:noinspection SpellCheckingInspection
-func SetUpRouter() {
+func InitRouter() {
 	//处理对应页面的请求，注意URL与前端的是否一致！！！
 
 	//用户模块

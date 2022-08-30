@@ -12,9 +12,9 @@ func main() {
 	//连接MySQL
 	utils.InitMySQL()
 
-	//雪花算法
-	utils.InitSnow()
+	//雪花算法优化版
+	utils.InitID()
 
 	//注册路由
-	routers.SetUpRouter()
+	routers.InitRouter()
 }
