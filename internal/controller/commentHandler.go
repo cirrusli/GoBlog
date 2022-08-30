@@ -4,6 +4,7 @@ import (
 	"SummerProject/internal/model"
 	"SummerProject/internal/service"
 	"SummerProject/utils"
+	"github.com/yitter/idgenerator-go/idgen"
 	"net/http"
 	"strconv"
 )
@@ -27,7 +28,7 @@ func PostComment(w http.ResponseWriter, r *http.Request) {
 	aid, _ := strconv.Atoi(data["aid"].(string))
 
 	comment := &model.Comment{
-		Cid:     utils.EncodeID(),
+		Cid:     int(idgen.NextId()),
 		Content: data["content"].(string),
 		Uid:     uid,
 		Aid:     aid,

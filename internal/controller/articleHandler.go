@@ -4,6 +4,7 @@ import (
 	"SummerProject/internal/model"
 	"SummerProject/internal/service"
 	"SummerProject/utils"
+	"github.com/yitter/idgenerator-go/idgen"
 	"net/http"
 	"strconv"
 )
@@ -42,7 +43,7 @@ func PostArticle(w http.ResponseWriter, r *http.Request) {
 	//comments, _ := strconv.Atoi(data["comments"].(string))
 	//likes, _ := strconv.Atoi(data["likes"].(string))
 	article := &model.Article{
-		Aid:     utils.EncodeID(),
+		Aid:     int(idgen.NextId()),
 		Uid:     uid,
 		Author:  data["author"].(string),
 		Title:   data["title"].(string),

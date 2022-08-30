@@ -4,8 +4,8 @@ import (
 	"SummerProject/internal/dao"
 	"SummerProject/internal/middleware"
 	"SummerProject/internal/model"
-	"SummerProject/utils"
 	"errors"
+	"github.com/yitter/idgenerator-go/idgen"
 	"log"
 	"strconv"
 )
@@ -26,7 +26,7 @@ func Register(UserName string, Password string) (*model.LoginRes, error) {
 		user := model.MUser{
 			UserName: UserName,
 			Password: Password,
-			Uid:      utils.EncodeID(),
+			Uid:      int(idgen.NextId()),
 		}
 		err := dao.CreateUser(&user)
 		if err != nil {
