@@ -1,8 +1,8 @@
 package controller
 
 import (
+	"SummerProject/common"
 	"SummerProject/internal/service"
-	"SummerProject/utils"
 	"net/http"
 )
 
@@ -13,34 +13,34 @@ type ResMsg struct {
 
 // Register 用户注册
 func Register(w http.ResponseWriter, r *http.Request) {
-	registerData := utils.GetRequestJsonParams(r)
+	registerData := common.GetRequestJsonParams(r)
 	UserName := registerData["username"].(string)
 	Password := registerData["password"].(string)
 
-	Password = utils.Encoder(Password)
+	Password = common.Encoder(Password)
 
 	registerRes, err := service.Register(UserName, Password)
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, registerRes)
+	common.Success(w, registerRes)
 }
 
 // LogIn 用户登录
 func LogIn(w http.ResponseWriter, r *http.Request) {
-	loginData := utils.GetRequestJsonParams(r)
+	loginData := common.GetRequestJsonParams(r)
 	UserName := loginData["username"].(string)
 	Password := loginData["password"].(string)
 
-	Password = utils.Encoder(Password)
+	Password = common.Encoder(Password)
 
 	loginRes, err := service.Login(UserName, Password)
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, loginRes)
+	common.Success(w, loginRes)
 }
 
 // LogOut 用户退出登录
@@ -50,7 +50,7 @@ func LogOut(w http.ResponseWriter, r *http.Request) {
 
 // GetUserInfo 获取用户详细信息
 func GetUserInfo(w http.ResponseWriter, r *http.Request) {
-	//data := utils.GetRequestJsonParams(r)
+	//data := common.GetRequestJsonParams(r)
 	//uid, _ := strconv.Atoi(data["uid"].(string))
 
 }

@@ -1,9 +1,9 @@
 package controller
 
 import (
+	"SummerProject/common"
 	"SummerProject/internal/model"
 	"SummerProject/internal/service"
-	"SummerProject/utils"
 	"github.com/yitter/idgenerator-go/idgen"
 	"net/http"
 	"strconv"
@@ -13,10 +13,10 @@ import (
 func GetArticleList(w http.ResponseWriter, r *http.Request) {
 	articleRes, err := service.GetSummaryList()
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, articleRes)
+	common.Success(w, articleRes)
 }
 
 // GetArticle 根据文章aid获取文章详细内容
@@ -25,16 +25,16 @@ func GetArticle(w http.ResponseWriter, r *http.Request) {
 	aid, _ := strconv.Atoi(data)
 	articleRes, err := service.GetArticle(aid)
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, articleRes)
+	common.Success(w, articleRes)
 }
 
 // PostArticle 发布文章
 func PostArticle(w http.ResponseWriter, r *http.Request) {
 	//todo jwt中间件鉴权
-	data := utils.GetRequestJsonParams(r)
+	data := common.GetRequestJsonParams(r)
 	//前端返回的文章数据如下：
 	//字符串类型需要转回int
 	uid, _ := strconv.Atoi(data["uid"].(string))
@@ -54,16 +54,16 @@ func PostArticle(w http.ResponseWriter, r *http.Request) {
 	aid := strconv.Itoa(article.Aid)
 	err := service.PostArticle(article)
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, aid) //发布成功
+	common.Success(w, aid) //发布成功
 }
 
 // UpdateArticle 更新文章
 func UpdateArticle(w http.ResponseWriter, r *http.Request) {
 	//鉴权
-	data := utils.GetRequestJsonParams(r)
+	data := common.GetRequestJsonParams(r)
 	uid, _ := strconv.Atoi(data["uid"].(string))
 	aid, _ := strconv.Atoi(data["aid"].(string))
 	article := &model.Article{
@@ -77,22 +77,22 @@ func UpdateArticle(w http.ResponseWriter, r *http.Request) {
 	}
 	err := service.UpdateArticle(article)
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, nil) //更新成功
+	common.Success(w, nil) //更新成功
 }
 
 // DeleteArticle 通过aid删除文章
 func DeleteArticle(w http.ResponseWriter, r *http.Request) {
-	data := utils.GetRequestJsonParams(r)
+	data := common.GetRequestJsonParams(r)
 	aid, _ := strconv.Atoi(data["aid"].(string))
 	err := service.DeleteArticle(aid)
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, nil)
+	common.Success(w, nil)
 }
 
 // GetUserArticle 由uid查看用户的所有文章
@@ -101,8 +101,8 @@ func GetUserArticle(w http.ResponseWriter, r *http.Request) {
 	uid, _ := strconv.Atoi(data)
 	articleList, err := service.GetUserArticle(uid)
 	if err != nil {
-		utils.Error(w, err)
+		common.Error(w, err)
 		return
 	}
-	utils.Success(w, articleList)
+	common.Success(w, articleList)
 }

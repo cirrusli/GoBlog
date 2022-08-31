@@ -1,14 +1,14 @@
 package dao
 
 import (
+	"SummerProject/common"
 	"SummerProject/internal/model"
-	"SummerProject/utils"
 )
 
 // GetAllSummaries 用户登录成功后，在主页展示文章摘要
 func GetAllSummaries() (articleRes []*model.ArticleRes, err error) {
 	//在article表中查询选定字段
-	err = utils.MDB.Table("articles").
+	err = common.MDB.Table("articles").
 		Select("aid,author,title,cover,summary").Where("deleted_at", nil).Scan(&articleRes).Error
 	if err != nil {
 		return nil, err
@@ -19,7 +19,7 @@ func GetAllSummaries() (articleRes []*model.ArticleRes, err error) {
 // GetArticle 根据aid获取文章详情
 func GetArticle(aid int) (*model.Article, error) {
 	article := new(model.Article)
-	if err := utils.MDB.Where("aid=?", aid).First(article).Error; err != nil {
+	if err := common.MDB.Where("aid=?", aid).First(article).Error; err != nil {
 		return nil, err
 	}
 	return article, nil
@@ -27,7 +27,7 @@ func GetArticle(aid int) (*model.Article, error) {
 
 // PostArticle 用户发布文章
 func PostArticle(article *model.Article) (err error) {
-	if err = utils.MDB.Table("articles").Create(article).Error; err != nil {
+	if err = common.MDB.Table("articles").Create(article).Error; err != nil {
 		return err
 	}
 	return nil
@@ -35,7 +35,7 @@ func PostArticle(article *model.Article) (err error) {
 
 // UpdateArticle 用户更新文章
 func UpdateArticle(article *model.Article) (err error) {
-	if err = utils.MDB.Table("articles").Where("aid=?", article.Aid).Updates(article).Error; err != nil {
+	if err = common.MDB.Table("articles").Where("aid=?", article.Aid).Updates(article).Error; err != nil {
 		return err
 	}
 	return nil
@@ -45,13 +45,13 @@ func UpdateArticle(article *model.Article) (err error) {
 func DeleteArticle(aid int) (err error) {
 	//var article *model.Article仅仅声明，没有分配值
 	article := new(model.Article)
-	if err = utils.MDB.Table("articles").Where("aid=?", aid).Delete(article).Error; err != nil {
+	if err = common.MDB.Table("articles").Where("aid=?", aid).Delete(article).Error; err != nil {
 		return err
 	}
 	return err
 }
 func GetUserArticle(uid int) (articleList []*model.Article, err error) {
-	if err = utils.MDB.Table("articles").Where("uid=?", uid).Find(&articleList).Error; err != nil {
+	if err = common.MDB.Table("articles").Where("uid=?", uid).Find(&articleList).Error; err != nil {
 		return nil, err
 	}
 	return articleList, nil

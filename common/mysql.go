@@ -1,4 +1,4 @@
-package utils
+package common
 
 import (
 	model2 "SummerProject/internal/model"

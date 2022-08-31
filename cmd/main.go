@@ -1,20 +1,20 @@
 package main
 
 import (
-	"SummerProject/routers"
-	"SummerProject/utils"
+	"SummerProject/common"
+	"SummerProject/internal/router"
 )
 
 func main() {
 	//连接Redis
-	//utils.InitRedis()
+	//common.InitRedis()
 
 	//连接MySQL
-	utils.InitMySQL()
+	common.InitMySQL()
 
 	//雪花算法优化版
-	utils.InitID()
+	common.InitID()
 
 	//注册路由
-	routers.InitRouter()
+	router.InitRouter()
 }
