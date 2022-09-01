@@ -8,6 +8,8 @@ import (
 	"net/http"
 )
 
+const Addr = "localhost:6666"
+
 //goland:noinspection SpellCheckingInspection
 func InitRouter() {
 	//attention:frontend request URL!!!
@@ -45,8 +47,8 @@ func InitRouter() {
 	http.HandleFunc("/getfollowerlist", controller.GetFollowerList)   //关注我的
 	//set up port listening
 	server := http.Server{
-		Addr:    "127.0.0.1:6666",
-		Handler: nil,
+		Addr:    Addr,
+		Handler: http.DefaultServeMux,
 	}
 	err := server.ListenAndServe()
 	if err != nil {

@@ -1,7 +1,7 @@
 package common
 
 import (
-	model2 "SummerProject/internal/model"
+	"SummerProject/internal/model"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -15,11 +15,11 @@ func InitMySQL() {
 	const (
 		UserName     = "root"
 		Password     = "lzq"
-		URL          = "127.0.0.1:3306"
+		Addr         = "127.0.0.1:3306"
 		DatabaseName = "summer_project"
 	)
 	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		UserName, Password, URL, DatabaseName)
+		UserName, Password, Addr, DatabaseName)
 	// DSN data source name
 	//想要正确的处理time.Time,需要带上 parseTime 参数，
 	//要支持完整的UTF-8编码，需要将 charset=utf8 更改为 charset=utf8mb4
@@ -37,7 +37,7 @@ func InitMySQL() {
 	//}
 
 	//绑定模型,自动创建对应的表
-	err = MDB.AutoMigrate(&model2.MUser{}, &model2.Article{}, &model2.Comment{}, &model2.Reply{}, &model2.Like{})
+	err = MDB.AutoMigrate(&model.MUser{}, &model.Article{}, &model.Comment{}, &model.Reply{}, &model.Like{})
 	if err != nil {
 		log.Panicln("migrate model MUser failed:", err.Error())
 	}

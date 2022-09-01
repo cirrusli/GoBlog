@@ -2,10 +2,14 @@ package main
 
 import (
 	"SummerProject/common"
+	"SummerProject/config"
 	"SummerProject/internal/router"
 )
 
 func main() {
+	//初始化配置项
+	config.InitConfig()
+
 	//连接Redis
 	//common.InitRedis()
 
