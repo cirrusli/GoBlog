@@ -1,0 +1,21 @@
+[MySQL]
+UserName     = "root"
+Password     = "lzq"
+Addr          = "localhost:3306"
+DatabaseName = "summer_project"
+[Redis]
+    [followingList]
+        Addr         = "localhost:6379"
+        Password     = ""
+        DB           = 0
+    [followersList]
+        Addr         = "localhost:6379"
+        Password     = ""
+        DB           = 1
+    [mutualFollowList]
+        Addr         = "localhost:6379"
+        Password     = ""
+        DB           = 2
+[Web]
+Addr         = "localhost:6666"
+# todo default cover and avatar
