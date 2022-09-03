@@ -1,18 +1,18 @@
 # GoBlog
 Summer vacation front-end and back-end separation project
 
-###########环境依赖
+## 环境依赖
 go 1.18
 MySQL 5.7
 Redis x64-3.2.100
 
-###########部署步骤
+## 部署步骤
 1. 启动Vue服务器
 
 2. 启动Go服务器
 
 
-###########目录结构描述
+## 目录结构描述
 ├── README.md                   
 ├── cmd                         // 应用
 │   └── main.go
@@ -27,7 +27,7 @@ Redis x64-3.2.100
 ├── config                      
 │   ├── config.go                // 配置控制
 │   └── config.toml               // 配置
-├── document                      
+├── document                     
 │   ├── Question.md               // 项目总结的问题
 │   └── sensitiveDict               // 敏感词字典
 ├── internal
