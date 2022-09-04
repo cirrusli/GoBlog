@@ -1,17 +1,14 @@
 package config
 
 import (
+	"SummerProject/internal/model"
 	"fmt"
 	"github.com/spf13/viper"
 	"log"
 )
 
-type MySQL struct {
-	UserName     string `toml:"UserName"`
-	Password     string `toml:"Password"`
-	Addr         string `toml:"Addr"`
-	DatabaseName string `toml:"DatabaseName"`
-}
+// Conf todo better not to use global variable
+var Conf *model.ConfStruct
 
 func InitConfig() {
 	viper.SetConfigName("config")
@@ -23,15 +20,10 @@ func InitConfig() {
 	}
 	fmt.Println("I can print this ", viper.AllSettings())
 
-	var mysql MySQL
-	err = viper.Unmarshal(&mysql)
+	err = viper.Unmarshal(&Conf)
 	if err != nil {
 		log.Fatalln("unmarshal failed:", err.Error())
 	}
-	log.Println(viper.GetString("MySQL.PassWord"))
-
-}
-func MySQLConfig() MySQL {
-	var mysql MySQL
-	return mysql
+	log.Println(viper.GetString("Redis.FollowingList"))
+	log.Println(Conf)
 }

@@ -4,18 +4,18 @@ Password     = "lzq"
 Addr          = "localhost:3306"
 DatabaseName = "summer_project"
 [Redis]
-    [followingList]
+    [FollowingList]
         Addr         = "localhost:6379"
         Password     = ""
         DB           = 0
-    [followersList]
+    [FollowersList]
         Addr         = "localhost:6379"
         Password     = ""
         DB           = 1
-    [mutualFollowList]
+    [MutualFollowList]
         Addr         = "localhost:6379"
         Password     = ""
         DB           = 2
-[Web]
+[WebService]
 Addr         = "localhost:6666"
 # todo default cover and avatar

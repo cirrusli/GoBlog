@@ -1,14 +1,13 @@
 package router
 
 import (
+	"SummerProject/config"
 	"SummerProject/internal/controller"
 	"SummerProject/internal/middleware"
 	"fmt"
 	"log"
 	"net/http"
 )
-
-const Addr = "localhost:6666"
 
 //goland:noinspection SpellCheckingInspection
 func InitRouter() {
@@ -47,7 +46,7 @@ func InitRouter() {
 	http.HandleFunc("/getfollowerlist", controller.GetFollowerList)   //关注我的
 	//set up port listening
 	server := http.Server{
-		Addr:    Addr,
+		Addr:    config.Conf.WebService.Addr,
 		Handler: http.DefaultServeMux,
 	}
 	err := server.ListenAndServe()

@@ -1,6 +1,7 @@
 package common
 
 import (
+	"SummerProject/config"
 	"SummerProject/internal/model"
 	"fmt"
 	"gorm.io/driver/mysql"
@@ -11,15 +12,9 @@ import (
 var MDB *gorm.DB
 
 func InitMySQL() {
-	//为以后写单独的配置文件做准备
-	const (
-		UserName     = "root"
-		Password     = "lzq"
-		Addr         = "127.0.0.1:3306"
-		DatabaseName = "summer_project"
-	)
+
 	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		UserName, Password, Addr, DatabaseName)
+		config.Conf.MySQL.UserName, config.Conf.MySQL.Password, config.Conf.MySQL.Addr, config.Conf.MySQL.DatabaseName)
 	// DSN data source name
 	//想要正确的处理time.Time,需要带上 parseTime 参数，
 	//要支持完整的UTF-8编码，需要将 charset=utf8 更改为 charset=utf8mb4
