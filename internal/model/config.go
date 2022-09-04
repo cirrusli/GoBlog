@@ -15,11 +15,12 @@ type MySQL struct {
 	DatabaseName string `mapstructure:"DatabaseName"`
 }
 
+// Redis todo 无法解析递归结构的数据，加不加mapstructure都没用
 // Redis 配置模块
 type Redis struct {
-	FollowingList    FollowingList
-	FollowersList    FollowersList
-	MutualFollowList MutualFollowList
+	FollowingList    FollowingList    `mapstructure:"FollowingList"`
+	FollowersList    FollowersList    `mapstructure:"FollowersList"`
+	MutualFollowList MutualFollowList `mapstructure:"MutualFollowList"`
 }
 type FollowingList struct {
 	Addr     string `mapstructure:"Addr"`
