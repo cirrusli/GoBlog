@@ -8,6 +8,7 @@ import (
 var RDB *redis.Client
 
 func InitRedis() {
+	//todo 关注，粉丝，互关分别是三个数据库
 	RDB = redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "",

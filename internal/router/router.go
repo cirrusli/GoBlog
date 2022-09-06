@@ -37,8 +37,7 @@ func InitRouter() {
 	http.HandleFunc("/deletecomment", controller.DeleteComment) //IsDeleted=true
 	http.HandleFunc("/reply2comment", controller.Reply2Comment)
 	//likeModule
-	http.HandleFunc("/likearticle", controller.LikeArticle)
-	http.HandleFunc("/likecomment", controller.LikeComment)
+	http.HandleFunc("/like", controller.Like)
 	//followModule
 	http.HandleFunc("/follow", controller.FollowUser)
 	http.HandleFunc("/unfollow", controller.UnFollowUser)

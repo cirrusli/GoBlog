@@ -1,13 +1,27 @@
 package controller
 
-import "net/http"
+import (
+	"SummerProject/common"
+	"SummerProject/internal/model"
+	"SummerProject/internal/service"
+	"net/http"
+	"strconv"
+)
 
-// LikeArticle 点赞当前文章
-func LikeArticle(w http.ResponseWriter, r *http.Request) {
-
-}
-
-// LikeComment 点赞当前评论
-func LikeComment(w http.ResponseWriter, r *http.Request) {
-
+// Like 点赞操作
+func Like(w http.ResponseWriter, r *http.Request) {
+	data := common.GetRequestJsonParams(r)
+	typeID, _ := strconv.Atoi(data["type_id"].(string))
+	likeType := data["like_type"].(bool)
+	uid, _ := strconv.Atoi(data["uid"].(string))
+	toUid, _ := strconv.Atoi(data["to_uid"].(string))
+	status := data["status"].(bool)
+	likeStructure := &model.Like{
+		TypeID:   typeID,
+		LikeType: likeType,
+		Uid:      uid,
+		ToUid:    toUid,
+		Status:   status,
+	}
+	res := service.LikeAction(likeStructure)
 }

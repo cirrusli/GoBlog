@@ -18,4 +18,7 @@ DatabaseName = "summer_project"
         DB           = 2
 [WebService]
 Addr         = "localhost:6666"
-# todo default cover and avatar
+# 以下并未采用配置文件写入
+[Default]
+Cover = "https://img-blog.csdnimg.cn/img_convert/7ad86d3945ddf7946e39d179e60c5687.png"
+Avatar = "https://image-1302243118.cos.ap-beijing.myqcloud.com/public/img/BLUE_GLASSES_GOPHER-1616727843503.png"
