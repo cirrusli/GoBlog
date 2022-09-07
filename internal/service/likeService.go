@@ -10,5 +10,5 @@ func LikeAction(likeStructure *model.Like) (err error) {
 	if err != nil {
 		return err
 	}
-
+	return nil
 }
