@@ -14,3 +14,9 @@ func LikeAction(likeStructure *model.Like) (err error) {
 	}
 	return nil
 }
+func IsLiked(typeID, uid int) (err error) {
+	if dao.IsLiked(typeID, uid) {
+		return errors.New("already liked")
+	}
+	return nil
+}

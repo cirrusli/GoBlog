@@ -23,5 +23,15 @@ func Like(w http.ResponseWriter, r *http.Request) {
 		ToUid:    toUid,
 		Status:   status,
 	}
-	res := service.LikeAction(likeStructure)
+	err := service.IsLiked(typeID, uid)
+	if err != nil {
+		common.Error(w, err)
+		return
+	}
+	err = service.LikeAction(likeStructure)
+	if err != nil {
+		common.Error(w, err)
+		return
+	}
+	common.Success(w, nil)
 }
