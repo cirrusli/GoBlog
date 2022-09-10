@@ -13,49 +13,31 @@ Redis x64-3.2.100
 
 
 ## 目录结构描述
+```
 │  go.mod
-
 │  go.sum
-
 │  README.md
-
+│          
 ├─cmd
-
 │      main.go
-
-│
-
+│      
 ├─common
-
 │      commonResponse.go
-
 │      encoder.go
-
 │      idGenerator.go
-
 │      mysql.go
-
 │      redis.go
-
 │      sensitiveFilter.go
-
 │      snowflakeid.go
-
-│
-
+│      
 ├─config
-
 │      config.go
-
 │      config.toml
-
-│
-
+│      
 ├─document
-
-│  Question.md
+│      Question.md
 │      sensitiveDict.txt
-│
+│      
 └─internal
     ├─controller
     │      articleHandler.go
@@ -63,30 +45,36 @@ Redis x64-3.2.100
     │      followHandler.go
     │      likeHandler.go
     │      userHandler.go
-    │
+    │      
     ├─dao
     │      articleDAO.go
     │      commentDAO.go
+    │      likeDAO.go
     │      userfollowDAO.go
     │      userinfoDAO.go
-    │
+    │      
     ├─middleware
     │      authJWT.go
     │      middlewareSourceCode.go
     │      simpleImplementation.go
-    │
+    │      
     ├─model
     │      article.go
     │      comment.go
+    │      config.go
     │      like.go
     │      resmsg.go
     │      userfollow.go
     │      userinfo.go
-    │
+    │      
     ├─router
     │      router.go
-    │
+    │      
     └─service
             articleService.go
             commentService.go
+            followService.go
+            likeService.go
             userService.go
+            
+```

@@ -10,6 +10,7 @@ import (
 )
 
 // GetArticleList 获取文章摘要列表
+//todo paginated list
 func GetArticleList(w http.ResponseWriter, r *http.Request) {
 	articleRes, err := service.GetSummaryList()
 	if err != nil {

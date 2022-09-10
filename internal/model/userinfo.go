@@ -2,8 +2,8 @@ package model
 
 import "gorm.io/gorm"
 
-// MUser 用户信息
-type MUser struct {
+// User 用户信息
+type User struct {
 	//todo 结构体内存对齐
 	gorm.Model
 	Uid       int    `json:"uid" gorm:"primaryKey"` //EncodeID

@@ -23,7 +23,7 @@ func Register(UserName string, Password string) (*model.LoginRes, error) {
 		//一般不能将错误详细信息返回，本项目简化了状态码
 	} else {
 		//无重复,在数据库中添加用户信息
-		user := model.MUser{
+		user := model.User{
 			UserName: UserName,
 			Password: Password,
 			Uid:      int(idgen.NextId()),

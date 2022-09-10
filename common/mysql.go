@@ -25,15 +25,15 @@ func InitMySQL() {
 		log.Panicln("connect MySQL failed:", err.Error())
 	}
 	// 检测User结构体对应的表是否存在
-	//if dao.MDB.Migrator().HasTable(&model.MUser{}) {
+	//if dao.MDB.Migrator().HasTable(&model.User{}) {
 	//	log.Println("exist")
 	//} else {
 	//	log.Println("not exist")
 	//}
 
 	//绑定模型,自动创建对应的表
-	err = MDB.AutoMigrate(&model.MUser{}, &model.Article{}, &model.Comment{}, &model.Reply{}, &model.Like{})
+	err = MDB.AutoMigrate(&model.User{}, &model.Article{}, &model.Comment{}, &model.Reply{}, &model.Like{})
 	if err != nil {
-		log.Panicln("migrate model MUser failed:", err.Error())
+		log.Panicln("migrate model User failed:", err.Error())
 	}
 }

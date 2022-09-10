@@ -10,6 +10,7 @@ import (
 )
 
 // GetComments 获取当前文章的所有评论
+//todo paginated list
 func GetComments(w http.ResponseWriter, r *http.Request) {
 	//获取ArticleID
 	data := r.URL.Query().Get("aid")
