@@ -3,12 +3,13 @@ Summer vacation front-end and back-end separation project
 
 ## 环境依赖
 go 1.18
+
 MySQL 5.7
+
 Redis x64-3.2.100
 
 ## 部署步骤
 1. 启动Vue服务器
-
 2. 启动Go服务器
 
 
