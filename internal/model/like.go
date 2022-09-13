@@ -9,4 +9,5 @@ type Like struct {
 	Uid      int  `json:"uid"`       //与MUser表中的Uid一致
 	ToUid    int  `json:"to_uid"`    //被点赞的用户的uid
 	Status   bool `json:"status"`    //0为取消赞，1为点赞
+
 }
