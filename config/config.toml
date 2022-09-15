@@ -17,7 +17,7 @@ DatabaseName = "summer_project"
         Password     = ""
         DB           = 2
 [WebService]
-Addr         = "localhost:6666"
+Addr         = "localhost:617"
 # 以下并未采用配置文件写入
 [Default]
 Cover = "https://img-blog.csdnimg.cn/img_convert/7ad86d3945ddf7946e39d179e60c5687.png"

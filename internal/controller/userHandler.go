@@ -3,6 +3,7 @@ package controller
 import (
 	"SummerProject/common"
 	"SummerProject/internal/service"
+	"log"
 	"net/http"
 )
 
@@ -37,9 +38,11 @@ func LogIn(w http.ResponseWriter, r *http.Request) {
 
 	loginRes, err := service.Login(UserName, Password)
 	if err != nil {
+		log.Println("error")
 		common.Error(w, err)
 		return
 	}
+	log.Println("success")
 	common.Success(w, loginRes)
 }
 
