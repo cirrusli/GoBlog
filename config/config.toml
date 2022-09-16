@@ -1,20 +1,20 @@
 [MySQL]
 UserName     = "root"
-Password     = "lzq"
+Password     = "123456"
 Addr          = "localhost:3306"
 DatabaseName = "summer_project"
 [Redis]
     [FollowingList]
         Addr         = "localhost:6379"
-        Password     = ""
+        Password     = "123456"
         DB           = 0
     [FollowersList]
         Addr         = "localhost:6379"
-        Password     = ""
+        Password     = "123456"
         DB           = 1
     [MutualFollowList]
         Addr         = "localhost:6379"
-        Password     = ""
+        Password     = "123456"
         DB           = 2
 [WebService]
 Addr         = "localhost:8617"
