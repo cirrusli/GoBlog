@@ -19,30 +19,30 @@ func InitRouter() {
 	})))
 	http.HandleFunc("/hello", middleware.Chain(middleware.Hello, middleware.Method("GET"), middleware.Logging()))
 	//userModule
-	http.HandleFunc("/login", controller.LogIn)
+	http.HandleFunc("/login", middleware.Chain(controller.LogIn, middleware.Logging()))
 	http.HandleFunc("/logout", controller.LogOut)
 	http.HandleFunc("/register", controller.Register)
 	http.HandleFunc("/getuserinfo", controller.GetUserInfo)
-	http.HandleFunc("/updateuserinfo", controller.UpdateUserInfo)
+	http.HandleFunc("/updateuserinfo", middleware.Chain(controller.UpdateUserInfo, middleware.AuthJWT()))
 	//articleModule
-	http.HandleFunc("/index", controller.GetArticleList)
-	http.HandleFunc("/article", controller.GetArticle)
-	http.HandleFunc("/postarticle", controller.PostArticle)
-	http.HandleFunc("/updatearticle", controller.UpdateArticle)
-	http.HandleFunc("/deletearticle", controller.DeleteArticle)
-	http.HandleFunc("/getuserarticle", controller.GetUserArticle)
+	http.HandleFunc("/index", middleware.Chain(controller.GetArticleList, middleware.Method("GET")))
+	http.HandleFunc("/article", middleware.Chain(controller.GetArticle, middleware.Method("GET")))
+	http.HandleFunc("/postarticle", middleware.Chain(controller.PostArticle, middleware.AuthJWT()))
+	http.HandleFunc("/updatearticle", middleware.Chain(controller.UpdateArticle, middleware.AuthJWT()))
+	http.HandleFunc("/deletearticle", middleware.Chain(controller.DeleteArticle, middleware.AuthJWT()))
+	http.HandleFunc("/getuserarticle", middleware.Chain(controller.GetUserArticle, middleware.Method("GET")))
 	//commentModule
-	http.HandleFunc("/getcomments", controller.GetComments)
-	http.HandleFunc("/postcomment", controller.PostComment)
-	http.HandleFunc("/deletecomment", controller.DeleteComment) //IsDeleted=true
-	http.HandleFunc("/reply2comment", controller.Reply2Comment)
+	http.HandleFunc("/getcomments", middleware.Chain(controller.GetComments, middleware.Method("GET")))
+	http.HandleFunc("/postcomment", middleware.Chain(controller.PostComment, middleware.AuthJWT()))
+	http.HandleFunc("/deletecomment", middleware.Chain(controller.DeleteComment, middleware.AuthJWT())) //IsDeleted=true
+	http.HandleFunc("/reply2comment", middleware.Chain(controller.Reply2Comment, middleware.AuthJWT()))
 	//likeModule
-	http.HandleFunc("/like", controller.Like)
+	http.HandleFunc("/like", middleware.Chain(controller.Like, middleware.AuthJWT()))
 	//followModule
-	http.HandleFunc("/follow", controller.FollowUser)
-	http.HandleFunc("/unfollow", controller.UnFollowUser)
-	http.HandleFunc("/getfollowinglist", controller.GetFollowingList) //我关注的
-	http.HandleFunc("/getfollowerlist", controller.GetFollowerList)   //关注我的
+	http.HandleFunc("/follow", middleware.Chain(controller.FollowUser, middleware.AuthJWT()))
+	http.HandleFunc("/unfollow", middleware.Chain(controller.UnFollowUser, middleware.AuthJWT()))
+	http.HandleFunc("/getfollowinglist", middleware.Chain(controller.GetFollowingList, middleware.AuthJWT())) //我关注的
+	http.HandleFunc("/getfollowerlist", middleware.Chain(controller.GetFollowerList, middleware.AuthJWT()))   //关注我的
 	//set up port listening
 	server := http.Server{
 		Addr:    config.Conf.WebService.Addr,
