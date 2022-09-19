@@ -1,8 +1,8 @@
 package redis
 
 import (
+	"SummerProject/common"
 	"github.com/go-redis/redis"
-	"log"
 )
 
 var RDB *redis.Client
@@ -15,8 +15,5 @@ func InitRedis() {
 		DB:       0,
 	})
 	_, err := RDB.Ping().Result()
-	if err != nil {
-		log.Panicln("connect Redis failed:", err.Error())
-	}
-
+	common.PanicLog("connect Redis failed:", err)
 }

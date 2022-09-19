@@ -16,6 +16,7 @@ DatabaseName = "summer_project"
         Addr         = "localhost:6379"
         Password     = ""
         DB           = 2
+
 [WebService]
 Addr         = "localhost:8617"
 # 以下并未采用配置文件写入

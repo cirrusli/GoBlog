@@ -1,7 +1,6 @@
 package config
 
 import (
-	"SummerProject/common"
 	"SummerProject/internal/model"
 	"fmt"
 	"github.com/spf13/viper" //Viper在后台使用github.com/mitchellh/mapstructure来解析值，其默认情况下使用mapstructure tag。
@@ -16,12 +15,16 @@ func InitConfig() {
 	viper.SetConfigType("toml")
 	viper.AddConfigPath("./config")
 	err := viper.ReadInConfig()
-	common.PanicLog("read config.toml failed:", err)
+	if err != nil {
+		log.Fatal("read config failed:", err)
+	}
 
 	fmt.Println("read configs succeed:", viper.AllSettings())
 
 	err = viper.Unmarshal(&Conf)
-	common.PanicLog("unmarshal failed:", err)
+	if err != nil {
+		log.Fatal("unmarshal config failed:", err)
+	}
 
 	log.Println(viper.GetString("Redis.FollowingList"))
 	log.Println(Conf)

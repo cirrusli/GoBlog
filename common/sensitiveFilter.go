@@ -7,7 +7,7 @@ import (
 
 var Filter *sensitive.Filter
 
-const WordDictPath = "./document/sensitiveDict.txt"
+const WordDictPath = "./docs/sensitiveDict.txt"
 
 func InitFilter() {
 	Filter = sensitive.New()

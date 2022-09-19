@@ -7,11 +7,6 @@ import (
 	"net/http"
 )
 
-// ResMsg 响应json信息的结构体
-type ResMsg struct {
-	Msg string `json:"msg"`
-}
-
 // Register 用户注册
 func Register(w http.ResponseWriter, r *http.Request) {
 	registerData := common.GetRequestJsonParams(r)
