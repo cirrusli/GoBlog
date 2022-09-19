@@ -2,7 +2,7 @@ package service
 
 import (
 	"SummerProject/internal/dao"
-	"SummerProject/internal/middleware"
+	"SummerProject/internal/middleware/jwt"
 	"SummerProject/internal/model"
 	"errors"
 	"github.com/yitter/idgenerator-go/idgen"
@@ -32,7 +32,7 @@ func Register(UserName string, Password string) (*model.LoginRes, error) {
 		if err != nil {
 			return nil, errors.New("create user failed")
 		}
-		token, err := middleware.Award(&user.Uid)
+		token, err := jwt.Award(&user.Uid)
 		if err != nil {
 			return nil, errors.New("create token failed")
 		}
@@ -54,7 +54,7 @@ func Login(UserName string, Password string) (*model.LoginRes, error) {
 	if user == nil {
 		return nil, errors.New("账号或密码错误！")
 	}
-	token, err := middleware.Award(&user.Uid)
+	token, err := jwt.Award(&user.Uid)
 	if err != nil {
 		return nil, errors.New("create token failed")
 	}

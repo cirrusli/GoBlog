@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"log"
 )
 
 var MDB *gorm.DB
@@ -21,9 +20,7 @@ func InitMySQL() {
 
 	var err error
 	MDB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Panicln("connect MySQL failed:", err.Error())
-	}
+	PanicLog("connect MySQL failed:", err)
 	// 检测User结构体对应的表是否存在
 	//if dao.MDB.Migrator().HasTable(&model.User{}) {
 	//	log.Println("exist")
@@ -33,7 +30,5 @@ func InitMySQL() {
 
 	//绑定模型,自动创建对应的表
 	err = MDB.AutoMigrate(&model.User{}, &model.Article{}, &model.Comment{}, &model.Reply{}, &model.Like{})
-	if err != nil {
-		log.Panicln("migrate model User failed:", err.Error())
-	}
+	PanicLog("migrate model User failed:", err)
 }

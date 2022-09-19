@@ -7,6 +7,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/importcjj/sensitive v0.0.0-20200106142752-42d1c505be7b
+	github.com/rabbitmq/amqp091-go v1.5.0
 	github.com/spf13/viper v1.12.0
 	github.com/yitter/idgenerator-go v1.3.1
 	gorm.io/driver/mysql v1.3.4

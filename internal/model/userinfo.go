@@ -4,7 +4,6 @@ import "gorm.io/gorm"
 
 // User 用户信息
 type User struct {
-	//todo 结构体内存对齐
 	gorm.Model
 	Uid       int    `json:"uid" gorm:"primaryKey"` //EncodeID
 	UserName  string `json:"username"`

@@ -1,7 +1,12 @@
-package middleware
+package jwt
 
 import (
+	"SummerProject/common"
+	"SummerProject/internal/middleware"
+	"errors"
 	gojwt "github.com/dgrijalva/jwt-go"
+	"log"
+	"net/http"
 	"os"
 	"time"
 )
@@ -47,4 +52,23 @@ func ParseToken(tokenStr string) (*gojwt.Token, *Claims, error) {
 		return nil, nil, err
 	}
 	return token, claims, err
+}
+func AuthJWT() middleware.Middleware {
+
+	// Create a new Middleware
+	return func(f http.HandlerFunc) http.HandlerFunc {
+
+		// Define the http.HandlerFunc
+		return func(w http.ResponseWriter, r *http.Request) {
+			tokenStr := r.Header.Get("Authorization")
+			_, claim, err := ParseToken(tokenStr)
+			if err != nil {
+				common.Error(w, errors.New("请先登录！"))
+				return
+			}
+			log.Println("执行操作的用户Uid:", claim.Uid)
+			// Call the next middleware/handler in chain
+			f(w, r)
+		}
+	}
 }

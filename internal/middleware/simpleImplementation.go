@@ -72,23 +72,3 @@ func Chain(f http.HandlerFunc, middlewares ...Middleware) http.HandlerFunc {
 func Hello(w http.ResponseWriter, r *http.Request) {
 	_, _ = fmt.Fprintln(w, "hello middlewares!")
 }
-
-func AuthJWT() Middleware {
-
-	// Create a new Middleware
-	return func(f http.HandlerFunc) http.HandlerFunc {
-
-		// Define the http.HandlerFunc
-		return func(w http.ResponseWriter, r *http.Request) {
-			tokenStr := r.Header.Get("Authorization")
-			_, claim, err := ParseToken(tokenStr)
-			if err != nil {
-				common.Error(w, errors.New("请先登录！"))
-				return
-			}
-			log.Println("执行操作的用户Uid:", claim.Uid)
-			// Call the next middleware/handler in chain
-			f(w, r)
-		}
-	}
-}

@@ -28,6 +28,11 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	common.Success(w, registerRes)
 }
 
+// OAuth2 第三方登录
+func OAuth2(w http.ResponseWriter, r *http.Request) {
+	//todo add third party login function
+}
+
 // LogIn 用户登录
 func LogIn(w http.ResponseWriter, r *http.Request) {
 	loginData := common.GetRequestJsonParams(r)

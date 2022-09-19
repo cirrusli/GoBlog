@@ -12,13 +12,11 @@ import (
 func GetRequestJsonParams(r *http.Request) map[string]interface{} {
 	var params map[string]interface{}
 	body, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		log.Println("parse form failed:", err.Error())
-	}
+	ErrorLog("parse form failed:", err)
+
 	err = json.Unmarshal(body, &params)
-	if err != nil {
-		log.Println("Decode error:", err.Error())
-	}
+	ErrorLog("Decode error:", err)
+
 	return params
 }
 
@@ -27,12 +25,12 @@ func Error(w http.ResponseWriter, err error) {
 	var resmsg model.ResMsg
 	resmsg.Code = "0000"
 	resmsg.Msg = err.Error()
-	resJson, _ := json.Marshal(resmsg)
+	resJson, err := json.Marshal(resmsg)
+	ErrorLog("JSON marshal failed:", err)
+
 	w.Header().Set("Content-Type", "application/json")
 	_, err = w.Write(resJson)
-	if err != nil {
-		log.Println(err)
-	}
+	ErrorLog("write json data failed:", err)
 
 }
 
@@ -42,10 +40,25 @@ func Success(w http.ResponseWriter, data interface{}) {
 	resmsg.Code = "0001"
 	resmsg.Msg = "success"
 	resmsg.Data = data
-	resJson, _ := json.Marshal(resmsg) //没有tag的结构体字段无法传入Json
+	resJson, err := json.Marshal(resmsg) //没有tag的结构体字段无法传入Json
+	ErrorLog("JSON marshal failed:", err)
+
 	w.Header().Set("Content-Type", "application/json")
-	_, err := w.Write(resJson)
+	_, err = w.Write(resJson)
+	ErrorLog("write json data failed:", err)
+
+}
+
+// ErrorLog 普通错误
+func ErrorLog(msg string, err error) {
 	if err != nil {
-		log.Println(err)
+		log.Println(msg, err.Error())
+	}
+}
+
+// PanicLog 崩溃错误
+func PanicLog(msg string, err error) {
+	if err != nil {
+		log.Panicln(msg, err.Error())
 	}
 }
