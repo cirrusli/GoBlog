@@ -27,7 +27,7 @@ func InitRouter() {
 	http.HandleFunc("/getuserinfo", controller.GetUserInfo)
 	http.HandleFunc("/updateuserinfo", middleware.Chain(controller.UpdateUserInfo, jwt.AuthJWT()))
 	//articleModule
-	http.HandleFunc("/index", middleware.Chain(controller.GetArticleList, middleware.Method("GET")))
+	http.HandleFunc("/index", middleware.Chain(controller.GetArticleList, middleware.Method("GET"), middleware.Logging()))
 	http.HandleFunc("/article", middleware.Chain(controller.GetArticle, middleware.Method("GET")))
 	http.HandleFunc("/postarticle", middleware.Chain(controller.PostArticle, jwt.AuthJWT()))
 	http.HandleFunc("/updatearticle", middleware.Chain(controller.UpdateArticle, jwt.AuthJWT()))

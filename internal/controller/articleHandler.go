@@ -5,6 +5,7 @@ import (
 	"SummerProject/internal/model"
 	"SummerProject/internal/service"
 	"github.com/yitter/idgenerator-go/idgen"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -17,6 +18,7 @@ func GetArticleList(w http.ResponseWriter, r *http.Request) {
 		common.Error(w, err)
 		return
 	}
+	log.Println("get article list succeeded")
 	common.Success(w, articleRes)
 }
 

@@ -13,7 +13,7 @@ func GetRequestJsonParams(r *http.Request) map[string]interface{} {
 	var params map[string]interface{}
 	body, err := ioutil.ReadAll(r.Body)
 	ErrorLog("parse form failed:", err)
-
+	log.Println(r.Body)
 	err = json.Unmarshal(body, &params)
 	ErrorLog("Decode error:", err)
 

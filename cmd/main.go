@@ -19,7 +19,7 @@ func main() {
 	//雪花算法优化版
 	common.InitID()
 
-	//启动rabbitmq
+	//启动RabbitMQ
 	//rabbitmq.SendInit()
 	//rabbitmq.ReceiveInit()
 
