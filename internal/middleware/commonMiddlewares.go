@@ -38,6 +38,22 @@ func Logging() Middleware {
 		}
 	}
 }
+func SetHeaders() Middleware {
+	// Create a new Middleware
+	return func(f http.HandlerFunc) http.HandlerFunc {
+
+		// Define the http.HandlerFunc
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Access-Control-Allow-Origin", "*")             //允许访问所有域
+			w.Header().Add("Access-Control-Allow-Headers", "Content-Type") //header的类型
+			w.Header().Set("content-type", "application/json")             //返回数据格式是json
+			log.Println("SetHeaders: set headers succeeded.")
+			// Call the next middleware/handler in chain
+			f(w, r)
+		}
+	}
+
+}
 
 // Method ensures that url can only be requested with a specific method, else returns a 400 Bad Request
 func Method(m string) Middleware {

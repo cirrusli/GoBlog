@@ -9,6 +9,7 @@ import (
 
 // Register 用户注册
 func Register(w http.ResponseWriter, r *http.Request) {
+
 	registerData := common.GetRequestJsonParams(r)
 	UserName := registerData["username"].(string)
 	Password := registerData["password"].(string)
@@ -23,13 +24,9 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	common.Success(w, registerRes)
 }
 
-// OAuth2 第三方登录
-func OAuth2(w http.ResponseWriter, r *http.Request) {
-	//todo add third party login function
-}
-
 // LogIn 用户登录
 func LogIn(w http.ResponseWriter, r *http.Request) {
+
 	loginData := common.GetRequestJsonParams(r)
 	UserName := loginData["username"].(string)
 	Password := loginData["password"].(string)
@@ -38,11 +35,11 @@ func LogIn(w http.ResponseWriter, r *http.Request) {
 
 	loginRes, err := service.Login(UserName, Password)
 	if err != nil {
-		log.Println("error")
+		log.Println("LogIn: error")
 		common.Error(w, err)
 		return
 	}
-	log.Println("success")
+	log.Println("LogIn: success")
 	common.Success(w, loginRes)
 }
 
@@ -61,4 +58,9 @@ func GetUserInfo(w http.ResponseWriter, r *http.Request) {
 // UpdateUserInfo 用户信息修改
 func UpdateUserInfo(w http.ResponseWriter, r *http.Request) {
 	//todo 修改用户名，密码，头像
+}
+
+// OAuth2 第三方登录
+func OAuth2(w http.ResponseWriter, r *http.Request) {
+	//todo add third party login function
 }

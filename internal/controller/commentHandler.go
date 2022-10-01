@@ -2,9 +2,12 @@ package controller
 
 import (
 	"SummerProject/common"
+	"SummerProject/internal/middleware/jwt"
 	"SummerProject/internal/model"
 	"SummerProject/internal/service"
+	"errors"
 	"github.com/yitter/idgenerator-go/idgen"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -24,6 +27,16 @@ func GetComments(w http.ResponseWriter, r *http.Request) {
 
 // PostComment 发布评论，返回生成的评论的cid
 func PostComment(w http.ResponseWriter, r *http.Request) {
+	tokenStr := r.Header.Get("Authorization")
+	//todo 测试中间件传递token部分开始
+	_, claim, err := jwt.ParseToken(tokenStr)
+	if err != nil {
+		common.Error(w, errors.New("请先登录！"))
+		return
+	}
+	log.Println("PostComment: success pass token")
+	log.Println("PostComment: 执行操作的用户Uid:", claim.Uid)
+	//以上为测试部分
 	data := common.GetRequestJsonParams(r)
 	uid, _ := strconv.Atoi(data["uid"].(string))
 	aid, _ := strconv.Atoi(data["aid"].(string))
@@ -35,7 +48,7 @@ func PostComment(w http.ResponseWriter, r *http.Request) {
 		Aid:     aid,
 	}
 	cid := strconv.Itoa(comment.Cid)
-	err := service.PostComment(comment)
+	err = service.PostComment(comment)
 	if err != nil {
 		common.Error(w, err)
 	}

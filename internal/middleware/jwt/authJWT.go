@@ -66,7 +66,7 @@ func AuthJWT() middleware.Middleware {
 				common.Error(w, errors.New("请先登录！"))
 				return
 			}
-			log.Println("执行操作的用户Uid:", claim.Uid)
+			log.Println("AuthJWT: 执行操作的用户Uid:", claim.Uid)
 			// Call the next middleware/handler in chain
 			f(w, r)
 		}

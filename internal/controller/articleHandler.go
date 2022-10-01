@@ -18,7 +18,7 @@ func GetArticleList(w http.ResponseWriter, r *http.Request) {
 		common.Error(w, err)
 		return
 	}
-	log.Println("get article list succeeded")
+	log.Println("GetArticleList: get article list succeeded")
 	common.Success(w, articleRes)
 }
 
