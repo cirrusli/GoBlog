@@ -1,5 +1,6 @@
 # GoBlog
-Summer vacation 
+Summer vacation
+
 The first front-end and back-end separation project
 
 ## 环境依赖
