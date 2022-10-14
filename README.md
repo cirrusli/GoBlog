@@ -1,5 +1,7 @@
 # GoBlog
-Summer vacation front-end and back-end separation project
+Summer vacation
+
+The first front-end and back-end separation project
 
 ## 环境依赖
 go 1.18
