@@ -14,6 +14,8 @@ import (
 //goland:noinspection SpellCheckingInspection
 func InitRouter() {
 	//attention:frontend request URL!!!
+	//test connection
+	http.HandleFunc("/testConn", middleware.Chain(testConn, middleware.SetHeaders()))
 	//test middleware
 	http.Handle("/test", middleware.LoggingMiddleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		_, _ = fmt.Fprintln(w, "test middleware")
@@ -52,4 +54,7 @@ func InitRouter() {
 	}
 	err := server.ListenAndServe()
 	common.PanicLog("set up router failed:", err)
+}
+func testConn(w http.ResponseWriter, r *http.Request) {
+	_, _ = w.Write([]byte("success"))
 }
