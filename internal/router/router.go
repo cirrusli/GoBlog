@@ -56,5 +56,6 @@ func InitRouter() {
 	common.PanicLog("set up router failed:", err)
 }
 func testConn(w http.ResponseWriter, r *http.Request) {
+	log.Println("testConn succeeded,the request IP:", common.GetRemoteIP(r))
 	_, _ = w.Write([]byte("success"))
 }
