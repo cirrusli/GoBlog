@@ -15,5 +15,8 @@ func InitRedis() {
 		DB:       0,
 	})
 	_, err := RDB.Ping().Result()
-	common.PanicLog("connect Redis failed:", err)
+	if err != nil {
+		common.PanicLog("connect Redis failed:", err)
+	}
+
 }

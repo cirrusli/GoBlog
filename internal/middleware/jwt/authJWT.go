@@ -24,7 +24,7 @@ type Claims struct {
 
 // Award 生成Token
 func Award(uid *int) (string, error) {
-	// 过期时间 默认7天
+	// 过期时间
 	expireTime := time.Now().Add(7 * 24 * time.Hour)
 	claims := &Claims{
 		Uid: *uid, //MUser.ID由uint转换为int
