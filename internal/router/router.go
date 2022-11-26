@@ -15,7 +15,7 @@ import (
 func InitRouter() {
 	//attention:frontend request URL!!!
 	//test connection
-	http.HandleFunc("/testConn", middleware.Chain(testConn, middleware.SetHeaders()))
+	http.HandleFunc("/testConn", testConn)
 	//test middleware
 	http.Handle("/test", middleware.LoggingMiddleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		_, _ = fmt.Fprintln(w, "test middleware")
@@ -56,6 +56,11 @@ func InitRouter() {
 	common.PanicLog("set up router failed:", err)
 }
 func testConn(w http.ResponseWriter, r *http.Request) {
+	//forbid unknown domain name
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:8617") //测试仅允许此域访问
+	w.Header().Add("Access-Control-Allow-Headers", "Content-Type")         //header的类型
+	w.Header().Set("content-type", "application/json")                     //返回数据格式是json
+	log.Println(r.Header.Get("Origin"))
 	log.Println("testConn succeeded,the request IP:", common.GetRemoteIP(r))
 	_, _ = w.Write([]byte("success"))
 }

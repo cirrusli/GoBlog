@@ -7,7 +7,7 @@ import (
 
 // CreateUser 创建用户信息
 func CreateUser(user *model.User) (err error) {
-	err = common.MDB.Create(&user).Error
+	err = common.MDB.Create(user).Error //use pointer to create
 	return err
 }
 
