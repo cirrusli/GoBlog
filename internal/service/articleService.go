@@ -1,8 +1,8 @@
 package service
 
 import (
-	"SummerProject/internal/dao"
-	"SummerProject/internal/model"
+	"GoBlog/internal/dao"
+	"GoBlog/internal/model"
 	"errors"
 	"strconv"
 )

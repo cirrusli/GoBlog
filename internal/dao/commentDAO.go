@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"SummerProject/common"
-	"SummerProject/internal/model"
+	"GoBlog/common"
+	"GoBlog/internal/model"
 )
 
 // GetComments 根据aid获取该文章的所有评论

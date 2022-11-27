@@ -1,9 +1,9 @@
 package service
 
 import (
-	"SummerProject/internal/dao"
-	"SummerProject/internal/middleware/jwt"
-	"SummerProject/internal/model"
+	"GoBlog/internal/dao"
+	"GoBlog/internal/middleware/jwt"
+	"GoBlog/internal/model"
 	"errors"
 	"github.com/yitter/idgenerator-go/idgen"
 	"log"

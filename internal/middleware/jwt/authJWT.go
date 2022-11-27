@@ -1,8 +1,8 @@
 package jwt
 
 import (
-	"SummerProject/common"
-	"SummerProject/internal/middleware"
+	"GoBlog/common"
+	"GoBlog/internal/middleware"
 	"errors"
 	gojwt "github.com/dgrijalva/jwt-go"
 	"log"

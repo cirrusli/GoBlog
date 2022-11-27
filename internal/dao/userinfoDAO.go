@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"SummerProject/common"
-	"SummerProject/internal/model"
+	"GoBlog/common"
+	"GoBlog/internal/model"
 )
 
 // CreateUser 创建用户信息

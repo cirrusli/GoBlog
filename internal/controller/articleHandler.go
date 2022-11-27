@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"SummerProject/common"
-	"SummerProject/internal/model"
-	"SummerProject/internal/service"
+	"GoBlog/common"
+	"GoBlog/internal/model"
+	"GoBlog/internal/service"
 	"github.com/yitter/idgenerator-go/idgen"
 	"log"
 	"net/http"

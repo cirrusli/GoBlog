@@ -1,6 +1,6 @@
 package dao
 
-import "SummerProject/internal/model"
+import "GoBlog/internal/model"
 
 func Follow(follow model.UserFollow) {
 }

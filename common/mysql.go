@@ -1,8 +1,8 @@
 package common
 
 import (
-	"SummerProject/config"
-	"SummerProject/internal/model"
+	"GoBlog/config"
+	"GoBlog/internal/model"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

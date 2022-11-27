@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"SummerProject/common"
-	"SummerProject/internal/model"
+	"GoBlog/common"
+	"GoBlog/internal/model"
 	"gorm.io/gorm"
 )
 

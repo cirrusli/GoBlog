@@ -1,11 +1,11 @@
 package router
 
 import (
-	"SummerProject/common"
-	"SummerProject/config"
-	"SummerProject/internal/controller"
-	"SummerProject/internal/middleware"
-	"SummerProject/internal/middleware/jwt"
+	"GoBlog/common"
+	"GoBlog/config"
+	"GoBlog/internal/controller"
+	"GoBlog/internal/middleware"
+	"GoBlog/internal/middleware/jwt"
 	"fmt"
 	"log"
 	"net/http"

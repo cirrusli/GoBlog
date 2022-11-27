@@ -1,7 +1,7 @@
 package config
 
 import (
-	"SummerProject/internal/model"
+	"GoBlog/internal/model"
 	"fmt"
 	"github.com/spf13/viper" //Viper在后台使用github.com/mitchellh/mapstructure来解析值，其默认情况下使用mapstructure tag。
 	"log"

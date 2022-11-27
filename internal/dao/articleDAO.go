@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"SummerProject/common"
-	"SummerProject/internal/model"
+	"GoBlog/common"
+	"GoBlog/internal/model"
 )
 
 // GetAllSummaries 用户登录成功后，在主页展示文章摘要

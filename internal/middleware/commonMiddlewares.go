@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"SummerProject/common"
+	"GoBlog/common"
 	"errors"
 	"fmt"
 	"log"

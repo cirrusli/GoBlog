@@ -1,7 +1,7 @@
 package common
 
 import (
-	"SummerProject/internal/model"
+	"GoBlog/internal/model"
 	"encoding/json"
 	"io/ioutil"
 	"log"

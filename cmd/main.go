@@ -1,12 +1,14 @@
 package main
 
 import (
-	"SummerProject/common"
-	"SummerProject/config"
-	"SummerProject/internal/router"
+	"GoBlog/common"
+	"GoBlog/config"
+	"GoBlog/internal/router"
+	"fmt"
 )
 
-func main() {
+func init() {
+
 	//初始化配置项
 	config.InitConfig()
 
@@ -23,6 +25,9 @@ func main() {
 	//rabbitmq.SendInit()
 	//rabbitmq.ReceiveInit()
 
-	//注册路由
+}
+func main() {
+	fmt.Println("初始化成功！")
+
 	router.InitRouter()
 }

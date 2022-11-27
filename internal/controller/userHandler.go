@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"SummerProject/common"
-	"SummerProject/internal/service"
+	"GoBlog/common"
+	"GoBlog/internal/service"
 	"log"
 	"net/http"
 )

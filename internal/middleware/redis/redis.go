@@ -1,7 +1,7 @@
 package redis
 
 import (
-	"SummerProject/common"
+	"GoBlog/common"
 	"github.com/go-redis/redis"
 )
 
